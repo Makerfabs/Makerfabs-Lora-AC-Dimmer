@@ -110,7 +110,7 @@ The device ID is the factory serial number of manual burning, manual modificatio
 Generally, the value is ID+6 digits.
 
 ```
-ID000001
+ID000123
 ```
 
 Can be customized by the user, also provided to get the 328P chip UID routines.
@@ -134,7 +134,7 @@ All open Dimmer and relay.
 Example:
 
 ```
-  ID000123ACT000PARAM000000#
+  ID000123ACT001PARAM000000#
 ```
 All close dimmer which named ID000123.
 
@@ -147,12 +147,12 @@ Set dimmer's phase cutting.
 Example:
 
 ```
-  ID000123ACT002PARAM005150#
+  ID000123ACT002PARAM000150#
 ```
 Set dimmer's phase cutting to 150/255 which named ID000123.
-#### ACT = 3 PWM DELAY ON  (delay and then close)
+#### ACT = 3 PWM DELAY ON   (delay and then all on)
 
-Set dimmer's phase cutting in seconds and then close the dimmer.
+Set dimmer's phase cutting in seconds and then open the dimmer.
 
 - Phase cutting : PARAM % 1000 = 0-255
 - Delay time (second) :   PARAM / 1000 = 0-999
@@ -163,9 +163,9 @@ Example:
   ID000123ACT003PARAM005060#
 ```
 Set dimmer's phase cutting to 60/225 which named ID000123. And all open after 5 seconds.
-#### ACT = 4 PWM DELAY OFF  (delay and then all on)
+#### ACT = 4 PWM DELAY OFF (delay and then close)
 
-Set dimmer's phase cutting in seconds and then all open the dimmer.
+Set dimmer's phase cutting in seconds and then all close the dimmer.
 
 - Phase cutting : PARAM % 1000 = 0-255
 - Delay time (second) :   PARAM / 1000 = 0-999
