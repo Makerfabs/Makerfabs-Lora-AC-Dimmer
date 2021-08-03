@@ -20,12 +20,12 @@ Command example:
 
   ACT = 3 PWM DELAY ON  (delay and then close)
     PARAM % 1000 = 0-255 Dimmer PWM
-    PARAM % 1000 = 0-999 Second Delay
+    PARAM / 1000 = 0-999 Second Delay
     ID001ACT003PARAM000060
 
   ACT = 4 PWM DELAY OFF  (delay and then all on)
     PARAM % 1000 = 0-255 Dimmer PWM
-    PARAM % 1000 = 0-999 Second Delay
+    PARAM / 1000 = 0-999 Second Delay
     ID001ACT004PARAM005060
 
 */

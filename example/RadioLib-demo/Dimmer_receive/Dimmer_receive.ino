@@ -20,6 +20,32 @@
    https://jgromes.github.io/RadioLib/
 */
 
+/*
+
+Command example:
+
+  ACT = 0 Close
+    ID001ACT000PARAM000000#
+
+  ACT = 1 All Open
+    ID001ACT001PARAM000000#
+
+  ACT = 2 PWM 
+    PARAM = 0-255 Dimmer PWM 
+    ID001ACT002PARAM005150
+
+  ACT = 3 PWM DELAY ON  (delay and then close)
+    PARAM % 1000 = 0-255 Dimmer PWM
+    PARAM / 1000 = 0-999 Second Delay
+    ID001ACT003PARAM000060
+
+  ACT = 4 PWM DELAY OFF  (delay and then all on)
+    PARAM % 1000 = 0-255 Dimmer PWM
+    PARAM / 1000 = 0-999 Second Delay
+    ID001ACT004PARAM005060
+
+*/
+
 // include the library
 #include <RadioLib.h>
 #include "avr/boot.h"
@@ -46,11 +72,13 @@
 #define RELAY_OFF digitalWrite(RELAY_PIN, LOW)
 #define RELAY_ON digitalWrite(RELAY_PIN, HIGH)
 
-String node_id = "ID0000000000000000000";
+String node_id = String("ID") + "000123";
+int id_number_length = 6;
 int dim = 0; //Initial brightness level from 0 to 255, change as you like!
 int delay_flag = 0;
 long command_time = 0;
 long delay_second = 0;
+String debug_id = "IDXDEBUG";
 
 /*
 Begin method:
@@ -96,7 +124,7 @@ void setup()
 
     pin_init();
 
-    node_id = get_UID();
+    //node_id = get_UID();
 
     // initialize SX1278 with default settings
     Serial.print(F("[SX1278] Initializing ... "));
@@ -225,11 +253,11 @@ int command_explain(String str)
 {
     //string spilt
     String txt = str;
-    if (txt.startsWith(node_id))
+    if (txt.startsWith(node_id) || txt.startsWith(debug_id))
     {
         //int node_id = (txt.substring(2, 5)).toInt();
-        long node_act = txt.substring(25, 28).toInt();
-        int node_param = txt.substring(34, 40).toInt();
+        long node_act = txt.substring(id_number_length + 5, id_number_length + 8).toInt();
+        int node_param = txt.substring(id_number_length + 14, id_number_length + 20).toInt();
 
         Serial.println("ACT:  " + String(node_act));
         Serial.println("PARAM: " + String(node_param));
@@ -284,6 +312,7 @@ int command_explain(String str)
     return 0;
 }
 
+//Get 328p UID
 String get_UID()
 {
     String UID = "ID";

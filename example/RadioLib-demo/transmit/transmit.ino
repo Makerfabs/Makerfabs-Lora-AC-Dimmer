@@ -88,11 +88,13 @@ SX1278 radio = new Module(LORA_CS, DIO0, LORA_RST, DIO1);
 // https://github.com/jgromes/RadioShield
 //SX1278 radio = RadioShield.ModuleA;
 
-String command_text[5] = {"ID553032303736FF50000ACT001PARAM000000#",
-                          "ID553032303736FF51324ACT000PARAM000000#",
-                          "ID553032303736FF51324ACT003PARAM000060#",
-                          "ID553032303736FF51324ACT004PARAM005060#",
-                          "ID553032303736FF51324ACT002PARAM005150#"};
+
+//Debug ID = "IDXDEBUG"
+String command_text[5] = {"ID000123ACT001PARAM000000#",
+                          "ID000123ACT000PARAM000000#",
+                          "ID000123ACT003PARAM000060#",
+                          "ID000123ACT004PARAM005060#",
+                          "ID000123ACT002PARAM005150#"};
 
 void setup()
 {
