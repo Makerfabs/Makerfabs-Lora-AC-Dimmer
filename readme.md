@@ -87,19 +87,13 @@ Like:
 
 Factory firmware use this library. 
 
-If you need to send Lora to debug AC Dimmer, you can use the code in "Makerfabs-Lora-AC-Dimmer/example/RadioLib-demo/transmit/transmit.ino". With Maduino Lora Radio, or another Marduino Lora device based on 328p. Of course, two AC Dimmers can also be used, one as the sender and one as the receiver.
+If you need to send Lora to debug AC Dimmer, you can use the code in "Makerfabs-Lora-AC-Dimmer/example/RadioLib-demo/transmit/transmit.ino". With Maduino Lora Radio, or another Marduino Lora device based on 328p. 
+
+Of course, two AC Dimmers can also be used, one as the sender and one as the receiver.
 
 AC Dimmer's Phase cutting is controlled by a plaintext Lora message
 
 ![LoRa_AC_dimmer_003](md_pic/LoRa_AC_dimmer_003.jpg)
-
-### example\RadioHead-demo
-
-Using RadioHead's Lora library, tests found that it seemed impossible to communicate with RadioLib. RadioHead may not be available under ESP32. (Not sure, maybe my configuration is wrong.)
-
-With Maduino Lora Radio, or another Marduino Lora device based on 328p. Of course, two AC Dimmers can also be used, one as the sender and one as the receiver.
-
-
 
 ## Lora Instruction 
 
@@ -133,7 +127,7 @@ Can be customized by the user, also provided to get the 328P chip UID routines.
 
 ### Action ID
 
-#### ACT = 0 Close
+#### ACT = 000 Close
 
 Close Dimmer and cut relay.
 
@@ -143,7 +137,7 @@ Close Dimmer and cut relay.
 
 All open dimmer which named ID000123.
 
-#### ACT = 1 All Open
+#### ACT = 001 All Open
 
 All open Dimmer and relay.
 
@@ -156,7 +150,7 @@ All close dimmer which named ID000123.
 
 ![LoRa_AC_dimmer_004](md_pic/LoRa_AC_dimmer_004.jpg)
 
-#### ACT = 2 PWM 
+#### ACT = 002 PWM 
 
 Set dimmer's phase cutting.
 
@@ -171,7 +165,7 @@ Set dimmer's phase cutting to 51/255(20%) which named ID000123.
 
 ![LoRa_AC_dimmer_005](md_pic/LoRa_AC_dimmer_005.jpg)
 
-#### ACT = 3 PWM DELAY ON   (delay and then all on)
+#### ACT = 003 PWM DELAY ON   (delay and then all on)
 
 Set dimmer's phase cutting in seconds and then open the dimmer.
 
@@ -184,7 +178,7 @@ Example:
   ID000123ACT003PARAM005060#
 ```
 Set dimmer's phase cutting to 60/225 which named ID000123. And all open after 5 seconds.
-#### ACT = 4 PWM DELAY OFF (delay and then close)
+#### ACT = 004 PWM DELAY OFF (delay and then close)
 
 Set dimmer's phase cutting in seconds and then all close the dimmer.
 
