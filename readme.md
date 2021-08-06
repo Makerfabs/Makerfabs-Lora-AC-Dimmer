@@ -2,10 +2,11 @@
 
 ```c++
 /*
-Version:		V1.0
+Version:		V1.1
 Author:			Vincent
 Create Date:	2021/7/31
 Note:
+	2021/8/6 V1.1:Change firmware position.
 	
 */
 ```
@@ -55,8 +56,20 @@ This is a special module that Makerfabs had burned the firmware to it before shi
 
 ![front](md_pic/front.jpg)
 
-### Back:
-![back](md_pic/back~1.jpg)
+# HOW TO USE
+
+## Firmware
+
+Factory firmware is "Makerfabs-Lora-AC-Dimmer/firmware/".
+
+**Attation:  Each factory terminal number will be different, according to the detailed stickers on the board prevail. Of course you can also re-burn the firmware to change it to your own number.**
+
+Like:
+
+```c++
+75	String node_id = String("ID") + "000123";
+```
+
 
 
 ## Compiler Options
@@ -64,18 +77,21 @@ This is a special module that Makerfabs had burned the firmware to it before shi
 
 - Please disconnect from the electrical equipment before burning!
 - Do not burn with alternating current!
-
 - Upload codes, select "Arduino Pro or Pro Mini" and "3.3V 8MHz"
+
+
 
 ## Example List
 
 ### example\RadioLib-demo
 
-Factory firmware. But device id should different.
+Factory firmware use this library. 
 
-With Maduino Lora Radio, or another Marduino Lora device based on 328p. Of course, two AC Dimmers can also be used, one as the sender and one as the receiver.
+If you need to send Lora to debug AC Dimmer, you can use the code in "Makerfabs-Lora-AC-Dimmer/example/RadioLib-demo/transmit/transmit.ino". With Maduino Lora Radio, or another Marduino Lora device based on 328p. Of course, two AC Dimmers can also be used, one as the sender and one as the receiver.
 
 AC Dimmer's Phase cutting is controlled by a plaintext Lora message
+
+![LoRa_AC_dimmer_003](md_pic/LoRa_AC_dimmer_003.jpg)
 
 ### example\RadioHead-demo
 
@@ -138,6 +154,8 @@ Example:
 ```
 All close dimmer which named ID000123.
 
+![LoRa_AC_dimmer_004](md_pic/LoRa_AC_dimmer_004.jpg)
+
 #### ACT = 2 PWM 
 
 Set dimmer's phase cutting.
@@ -147,9 +165,12 @@ Set dimmer's phase cutting.
 Example:
 
 ```
-  ID000123ACT002PARAM000150#
+  ID000123ACT002PARAM000051#
 ```
-Set dimmer's phase cutting to 150/255 which named ID000123.
+Set dimmer's phase cutting to 51/255(20%) which named ID000123.
+
+![LoRa_AC_dimmer_005](md_pic/LoRa_AC_dimmer_005.jpg)
+
 #### ACT = 3 PWM DELAY ON   (delay and then all on)
 
 Set dimmer's phase cutting in seconds and then open the dimmer.
