@@ -20,7 +20,7 @@ Note:
 
 [Makerfabs home page](https://www.makerfabs.com/)
 
-[Makerfabs Wiki](https://makerfabs.com/wiki/index.php?title=Main_Page)
+[Makerfabs Wiki](https://wiki.makerfabs.com/)
 
 
 # Makerfabs Lora AC Dimmer
@@ -29,7 +29,7 @@ Note:
 
 Product Link ：[]()
 
-Wiki Link :  [LoRa_AC_Dimmer](https://www.makerfabs.com/wiki/index.php?title=LoRa_AC_Dimmer) 
+Wiki Link :  [LoRa_AC_Dimmer](https://wiki.makerfabs.com/Lora_AC_Dimmer.html) 
 
 
 
